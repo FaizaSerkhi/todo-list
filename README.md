@@ -1,26 +1,62 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# React ToDo List
+# React ToDo List Lite
 
 ## Setup
 
 Run `npm install`
 
+To get you going, we've got a list with todos defined in App.js.
+
+Let's run the app with `npm run start` or `npm start`
 
 ## Background
 
-In the project directory, you can run:
+We have a React To Do List. We want the App to manage which ones are Completed and which ones are Incomplete (too lazy to keep track).
+We will pass the list of todos and render each onto the page while organizing which ones go in the appropriate category. At the same time, we want to be able to change the completed status and have it render it the new category.
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![Image of Finished](public/finishedApp.png)
 
-### `yarn test`
+## Deliverables
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Fetch the data from http://localhost:3000/todos
+* Render the each todo in the appropriate component
+* Each todo card will have button to change the complete status which will conditionally render based on the location of component. (i.e if a todo is under the Complete, the button text should say Incomplete and vice-versa.)
 
+
+
+![Change Complete Gif](public/ChangingTasks.gif)
+
+* Add a new todo. Make a POST request to http://localhost:3000/todos. 
+Don't forget: 
+```
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    },
+    body: JSON.stringify({})
+```
+* When the todo is successfully created in the server, make sure it is also rendered in React.
+* Delete a todo. Make a DELETE request to http://localhost:3000/todos/:id
+Don't forget:
+```
+    method: "DELETE"
+```
+* When the todo is successfully deleted, also remove from React.
+
+
+
+![Add Delete Todo](public/AddDeleteTodo.gif)
+
+* Incorporate the SearchBarComponent within the Incomplete Component to filter out todos. As you type, the Incomplete todos are dynamically rendered. 
+
+
+
+![Search Todos](public/SearchTodos.gif)
+
+### Bonus
+
+* Notice the Complete and Incomplete Components are bit redundant. Anyway to reuse just one component for both of them? (You may have to restructure a component to make this successfully work.)
